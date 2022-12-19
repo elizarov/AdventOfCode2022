@@ -98,8 +98,8 @@ fun main() {
     println(ans)
 }
 
-const val MAGIC = 0x9E3779B9.toInt()
-const val TX = ((2/3.0) * (1L shl 32)).toLong().toInt()
+private const val MAGIC = 0x9E3779B9.toInt()
+private const val TX = ((2/3.0) * (1L shl 32)).toLong().toInt()
 
 class HM(var shift: Int = 25) {
     var a = IntArray(1 shl (33 - shift))
