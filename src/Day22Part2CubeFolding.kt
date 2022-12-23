@@ -17,11 +17,11 @@ fun main() {
 
     // extract faces
     data class F(val i: Int, val j: Int)
-    val fm = LinkedHashMap<F, Int>()
-    for (i in a.indices) for (j in a[i].indices) if (a[i][j] != ' ') {
-        val f = F(i / fs, j / fs)
-        fm[f] = fm.getOrDefault(f, 0) + 1
-    }
+    val fm = buildList {
+        for (i in a.indices) for (j in a[i].indices) if (a[i][j] != ' ') {
+            add(F(i / fs, j / fs))
+        }
+    }.groupingBy { it }.eachCount()
     check(fm.values.all { it == fs * fs })
 
     // directions
