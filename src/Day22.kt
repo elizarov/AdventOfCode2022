@@ -1,3 +1,6 @@
+// Note: Part2 in this code works only on the actual input and does not work on the example,
+// because its cube-folding is hard-coded
+
 fun main() {
     day22Part(1)
     day22Part(2)
