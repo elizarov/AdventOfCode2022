@@ -1,23 +1,12 @@
 fun main() {
     val dayId = "12"
-    val a = readInput("Day${dayId}").map { it.toCharArray() }
-    val n = a.size
-    val m = a[0].size
-    data class P(val i: Int, val j: Int)
-    var e: P? = null
-    var s: P? = null
-    for (i in 0 until n) for (j in 0 until m) {
-        when (a[i][j]) {
-            'E' -> e = P(i, j)
-            'S' -> s = P(i, j)
-        }
-    }
-    check(e != null)
-    check(s != null)
-    val q = ArrayDeque<P>()
-    val v = HashMap<P, Int>()
+    val a = readInput("Day${dayId}").toCharArray2()
+    val (n, m) = a.size2()
+    val e = a.toListOfP2If { it == 'E' }.single()
+    val q = ArrayDeque<P2>()
+    val v = HashMap<P2, Int>()
     fun enq(i: Int, j: Int, d: Int) {
-        val p = P(i, j)
+        val p = P2(i, j)
         if (p in v) return
         v[p] = d
         q += p
@@ -45,7 +34,7 @@ fun main() {
     var ans = Int.MAX_VALUE
     for (i in 0 until n) for (j in 0 until m) {
         if (a[i][j] == 'a') {
-            val d = v[P(i, j)]
+            val d = v[P2(i, j)]
             if (d != null) ans = minOf(ans, d)
         }
     }

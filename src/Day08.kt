@@ -2,8 +2,7 @@ fun main() {
     val dayId = "08"
     val input = readInput("Day${dayId}")
     val a = input.map { s -> s.map { it.digitToInt() } }
-    val n = a.size
-    val m = a[0].size
+    val (n, m) = a.size2()
     // part 1
     val v = Array(n) { BooleanArray(m) }
     for (i in 0 until n) {

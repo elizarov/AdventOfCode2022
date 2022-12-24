@@ -5,25 +5,20 @@ fun main() {
 
 fun day23Part(part: Int) {
     val dayId = "23"
-    val input = readInput("Day${dayId}")
-    data class P(val i: Int, val j: Int)
-    val ps = HashSet<P>()
-    for (i in input.indices) for (j in input[i].indices) if (input[i][j] == '#') {
-        ps += P(i, j)
-    }
+    val ps = readInput("Day${dayId}").toCharArray2().toListOfP2If { it == '#' }.toMutableSet()
     // NSWE
     val di = listOf(-1, 1, 0, 0)
     val dj = listOf(0, 0, -1, 1)
     val adj1 = listOf(2, 2, 0, 0)
     val adj2 = listOf(3, 3, 1, 1)
     var round = 0
-    fun P.nextIn(d: Int) = P(i + di[d], j + dj[d])
-    fun P.neighbours(d: Int) : List<P> = buildList {
+    fun P2.nextIn(d: Int) = P2(i + di[d], j + dj[d])
+    fun P2.neighbours(d: Int) : List<P2> = buildList {
         val d1 = adj1[d]
         val d2 = adj2[d]
         add(nextIn(d))
-        add(P(i + di[d] + di[d1], j + dj[d] + dj[d1]))
-        add(P(i + di[d] + di[d2], j + dj[d] + dj[d2]))
+        add(P2(i + di[d] + di[d1], j + dj[d] + dj[d1]))
+        add(P2(i + di[d] + di[d2], j + dj[d] + dj[d2]))
     }
     while (true) {
         val plan = ps.associateWith { p ->

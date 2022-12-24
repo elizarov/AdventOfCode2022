@@ -16,8 +16,7 @@ fun day22Part(part: Int) {
     var i = 0
     var j = a[0].indexOf('.').also { check(it >= 0) }
     var d = 0
-    val di = listOf(0, 1, 0, -1)
-    val dj = listOf(1, 0, -1, 0)
+    val (di, dj) = RDLU_DIRS
 
     data class MC(val i: Int, val j: Int, val d: Int)
     // --------------- MANUALLY FOLDED CUBE FOR THE TEST INPUT ---------------

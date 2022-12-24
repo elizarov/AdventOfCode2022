@@ -25,8 +25,7 @@ fun main() {
     check(fm.values.all { it == fs * fs })
 
     // directions
-    val di = listOf(0, 1, 0, -1)
-    val dj = listOf(1, 0, -1, 0)
+    val (di, dj) = RDLU_DIRS
 
     // 3D vectors
     data class V3(val i: Int, val j: Int, val k: Int)
